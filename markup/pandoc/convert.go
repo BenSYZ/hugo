@@ -166,9 +166,10 @@ func (a *pandocConverter) extractTOC(src []byte) ([]byte, tableofcontents.Root, 
 	if err != nil {
 		return nil, tableofcontents.Root{}, err
 	}
-	// ltrim <html><head></head><body> and rtrim </body></html> which are added by html.Render
-	res := buf.Bytes()[25:]
-	res = res[:len(res)-14]
+
+	//ltrim <body>\n and rtrim \n\n</body>
+	res := buf.Bytes()[7:]
+	res = res[:len(res)-9]
 	return res, toc, nil
 }
 
