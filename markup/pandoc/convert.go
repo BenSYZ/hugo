@@ -80,7 +80,7 @@ func (c *pandocConverter) getPandocContent(src []byte, ctx converter.DocumentCon
 			"                 Leaving pandoc content unrendered.")
 		return src
 	}
-	args := []string{"--mathjax", "--toc", "-s", "--quiet"}
+	args := []string{"--mathjax", "--toc", "-s", "--quiet", "--no-highlight"}
 	return internal.ExternallyRenderContent(c.cfg, ctx, src, path, args)
 }
 
